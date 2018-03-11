@@ -57,9 +57,9 @@ bash 'Extract and configure the Bacula source code' do
   --sysconfdir=/opt/bacula/etc \
   --enable-smartalloc \
   --with-postgresql \
-  --with-working-dir=/opt/bacula/working
+  --with-working-dir=/opt/bacula/working \
   --with-pid-dir=/opt/bacula/working \
-  --with-subsys-dir=/opt/bacula/working
+  --with-subsys-dir=/opt/bacula/working \
   --enable-readline
   EOH
   action :run
