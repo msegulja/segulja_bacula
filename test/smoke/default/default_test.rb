@@ -13,12 +13,6 @@ describe directory('/opt/bacula/') do
   it { should exist }
 end
 
-describe file('opt/bacula/etc/bacula-dir.conf') do
-  it { should exist }
-  its('owner') { should eq 'root' }
-  its('group') { should eq 'root' }
-end
-
 describe file('/opt/bacula/etc/bacula-sd.conf') do
   it { should exist }
   its('owner') { should eq 'root' }

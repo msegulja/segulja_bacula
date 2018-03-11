@@ -14,7 +14,6 @@ verifier:
 
 platforms:
   - name: bento/oracle-7.3
-  - name: centos-7
 
 suites:
   - name: default
