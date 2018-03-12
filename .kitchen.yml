@@ -16,9 +16,9 @@ platforms:
   - name: bento/oracle-7.3
 
 suites:
-  - name: default
+  - name: director
     run_list:
-      - recipe[segulja_bacula::default]
+      - recipe[segulja_bacula::director]
     verifier:
       inspec_tests:
         - test/smoke/default

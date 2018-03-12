@@ -15,6 +15,8 @@ end
   make
   postgresql
   mariadb
+  mariadb-devel
+  mariadb-libs
 ).each do |pkg|
   package pkg do
     action :install
@@ -49,19 +51,28 @@ bash 'Extract and configure the Bacula source code' do
   echo
   echo "Extracting the Bacula Source Code into /tmp/bacula"
   tar zxvf /tmp/bacula/bacula-server.tar.gz
-  cd /tmp/bacula/bacula-9.0.6
-  echo
-  echo "Configuring the Bacula Source Code for installation"
-  CFLAGS="-g -Wall" ./configure \
-  --sbindir=/opt/bacula/bin \
-  --sysconfdir=/opt/bacula/etc \
-  --enable-smartalloc \
-  --with-postgresql \
-  --with-working-dir=/opt/bacula/working \
-  --with-pid-dir=/opt/bacula/working \
-  --with-subsys-dir=/opt/bacula/working \
-  --enable-readline
   EOH
   action :run
-  # not_if { ::File.exist?('/tmp/bacula/bacula-9.0.6/README') }
+  not_if { ::File.exist?('/tmp/bacula/bacula-9.0.6/README') }
+end
+
+execute 'Configure Bacula Backup System from source code' do
+  command 'cd /tmp/bacula/bacula-9.0.6 ; CFLAGS="-g -Wall" ./configure \
+                                          --sbindir=/opt/bacula/bin \
+                                          --sysconfdir=/opt/bacula/etc \
+                                          --enable-smartalloc \
+                                          --with-mysql \
+                                          --with-working-dir=/opt/bacula/working \
+                                          --with-pid-dir=/opt/bacula/working \
+                                          --with-subsys-dir=/opt/bacula/working \
+                                          --enable-readline'
+  action :run
+  live_stream true
+  not_if { ::File.exist?('/tmp/bacula/bacula-9.0.6/config.out') }
+end
+
+execute 'Compile Bacula Backup System from source code' do
+  command 'cd /tmp/bacula/bacula-9.0.6 ; make'
+  action :run
+  live_stream true
 end
