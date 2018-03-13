@@ -5,7 +5,7 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-describe file('opt/bacula/etc/bacula-dir.conf') do
+describe file('/opt/bacula/etc/bacula-dir.conf') do
   it { should exist }
   its('owner') { should eq 'root' }
   its('group') { should eq 'root' }

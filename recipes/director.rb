@@ -71,8 +71,9 @@ execute 'Configure Bacula Backup System from source code' do
   not_if { ::File.exist?('/tmp/bacula/bacula-9.0.6/config.out') }
 end
 
-execute 'Compile Bacula Backup System from source code' do
-  command 'cd /tmp/bacula/bacula-9.0.6 ; make'
+execute 'Compile and Install Bacula Backup System from source code' do
+  command 'cd /tmp/bacula/bacula-9.0.6 ; make ; make install'
   action :run
   live_stream true
+  not_if { :: File.exist?('/opt/bacula/bin/bacula') }
 end
