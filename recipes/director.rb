@@ -17,6 +17,9 @@ end
   mariadb
   mariadb-devel
   mariadb-libs
+  ncurses
+  ncurses-devel
+  ncurses-libs
 ).each do |pkg|
   package pkg do
     action :install
@@ -65,7 +68,9 @@ execute 'Configure Bacula Backup System from source code' do
                                           --with-working-dir=/opt/bacula/working \
                                           --with-pid-dir=/opt/bacula/working \
                                           --with-subsys-dir=/opt/bacula/working \
-                                          --enable-readline'
+                                          --enable-conio \
+                                          --with-archivedir=/opt/bacula/working/archive \
+                                          --with-dump-email=michael@segulja.com'
   action :run
   live_stream true
   not_if { ::File.exist?('/tmp/bacula/bacula-9.0.6/config.out') }
