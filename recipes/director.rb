@@ -82,3 +82,11 @@ execute 'Compile and Install Bacula Backup System from source code' do
   live_stream true
   not_if { :: File.exist?('/opt/bacula/bin/bacula') }
 end
+
+template '/opt/bacula/etc/bacula-dir.conf' do
+  source 'bacula-dir.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
