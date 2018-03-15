@@ -20,6 +20,7 @@ platforms:
 suites:
   - name: director
     run_list:
+      - recipe[segulja_spacewalk::default]
       - recipe[segulja_bacula::director]
     verifier:
       inspec_tests:
