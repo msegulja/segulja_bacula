@@ -99,7 +99,3 @@ template '/opt/bacula/etc/bacula-dir.conf' do
   mode '0755'
   action :create
 end
-
-service 'mysqld' do
-  action [:enable, :start]
-end
