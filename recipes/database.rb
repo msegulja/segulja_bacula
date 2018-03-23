@@ -22,8 +22,8 @@ execute 'Create the Bacula MySQL Database Tables' do
   live_stream true
 end
 
-# execute 'Set the default privileges on the Bacula Database' do
-#  command '/opt/bacula/etc/grant_bacula_privileges'
-#  action :run
-#  live_stream true
-# end
+execute 'Set the default privileges on the Bacula Database' do
+  command '/opt/bacula/etc/grant_bacula_privileges'
+  action :run
+  live_stream true
+end
