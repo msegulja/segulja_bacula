@@ -25,5 +25,6 @@ end
 execute 'Set the default privileges on the Bacula Database' do
   command '/opt/bacula/etc/grant_bacula_privileges'
   action :run
+  not_if 'mysql -u root -e "SELECT DISTINCT user FROM user" mysql | grep -i bacula'
   live_stream true
 end
