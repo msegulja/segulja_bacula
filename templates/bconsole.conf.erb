@@ -1,0 +1,10 @@
+#
+# Bacula User Agent (or Console) Configuration File
+#
+
+Director {
+  Name = <%= node['hostname'] %>-dir
+  DIRport = 9101
+  address = <%= node['ipaddress'] %>
+  Password = "91YT4JcWrJwlNU2i4Z0HX2pqclp3eiX5/BUj2N1861Si"
+}

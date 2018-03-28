@@ -10,3 +10,12 @@ describe file('/opt/bacula/etc/bacula-dir.conf') do
   its('owner') { should eq 'root' }
   its('group') { should eq 'root' }
 end
+
+describe service('mysqld') do
+  it { should be_running }
+  it { should be_enabled }
+end
+
+describe package('mt-st') do
+  it { should be_installed }
+end

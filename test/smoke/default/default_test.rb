@@ -5,10 +5,6 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-describe package('mt-st') do
-  it { should be_installed }
-end
-
 describe directory('/opt/bacula/') do
   it { should exist }
 end
