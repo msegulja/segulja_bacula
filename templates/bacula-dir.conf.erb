@@ -22,7 +22,7 @@ Director {                            # define myself
   WorkingDirectory = "/opt/bacula/working"
   PidDirectory = "/opt/bacula/working"
   Maximum Concurrent Jobs = <%= node['bacula']['dir']['max_concurrent_jobs'] %>
-  Password = "e9F3TKemFS7JKKM9vGKAbZJWi+RuICIkYaIbJXduXoyj"
+  Password = "91YT4JcWrJwlNU2i4Z0HX2pqclp3eiX5/BUj2N1861Si"
   Messages = Daemon
   DirAddress = <%= node['bacula']['dir']['address'] %>
 }
@@ -41,7 +41,6 @@ JobDefs {
   Priority = 10
   Write Bootstrap = "/opt/bacula/working/%c.bsr"
 }
-
 
 #
 # Define the main nightly save backup job
@@ -101,7 +100,6 @@ Job {
   Where = /opt/bacula/working/archive/bacula-restores
 }
 
-
 # List of files to be backed up
 FileSet {
   Name = "Full Set"
@@ -109,7 +107,7 @@ FileSet {
     Options {
       signature = MD5
     }
-#
+
 #  Put your list of files here, preceded by 'File =', one per line
 #    or include an external list with:
 #

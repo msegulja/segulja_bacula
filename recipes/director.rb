@@ -99,3 +99,11 @@ template '/opt/bacula/etc/bacula-dir.conf' do
   mode '0755'
   action :create
 end
+
+template '/opt/bacula/etc/bconsole.conf' do
+  source 'bconsole.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
