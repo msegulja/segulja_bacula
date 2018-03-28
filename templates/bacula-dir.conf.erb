@@ -194,6 +194,14 @@ Client {
 #  AutoPrune = yes                    # Prune expired Jobs/Files
 #}
 
+Storage {
+  Name = File
+  Address = <%= node['ipaddress'] %>
+  SDPort = 9103
+  Password = "YM4CFm4q15xzLGDq0bJ/DYjl94PyOI2JsPgnILoeADq/"
+  Device = Autochanger
+  Media Type = File
+}
 
 # Definition of file Virtual Autochanger device
 Autochanger {
