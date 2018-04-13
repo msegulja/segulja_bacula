@@ -4,10 +4,10 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-package 'mysql-community-common' do
-  action :remove
-  version ['5.7.16-1.el7']
-end
+# package 'mysql-community-common' do
+#  action :remove
+#  version ['5.7.16-1.el7']
+# end
 
 %w(
   mt-st
@@ -17,23 +17,28 @@ end
   ncurses
   ncurses-devel
   ncurses-libs
+  postgresql
+  postgresql-contrib
+  postgresql-devel
+  postgresql-libs
+  postgresql-server
 ).each do |pkg|
   package pkg do
     action :install
   end
 end
 
-%w(
-  mysql-community-client
-  mysql-community-common
-  mysql-community-devel
-  mysql-community-libs
-  mysql-community-server
-).each do |pkg|
-  package pkg do
-    version ['5.6.39-2.el7']
-  end
-end
+# %w(
+#   mysql-community-client
+#   mysql-community-common
+#   mysql-community-devel
+#   mysql-community-libs
+#   mysql-community-server
+# ).each do |pkg|
+#   package pkg do
+#     version ['5.6.39-2.el7']
+#   end
+# end
 
 %w(
   /tmp/bacula
@@ -73,7 +78,7 @@ execute 'Configure Bacula Backup System from source code' do
             --sbindir=/opt/bacula/bin \
             --sysconfdir=/opt/bacula/etc \
             --enable-smartalloc \
-            --with-mysql \
+            --with-postgresql \
             --with-working-dir=/opt/bacula/working \
             --with-pid-dir=/opt/bacula/working \
             --with-subsys-dir=/opt/bacula/working \
