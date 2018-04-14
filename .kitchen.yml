@@ -14,13 +14,14 @@ verifier:
 
 platforms:
   - name: bento/oracle-7.3
-    driver:config:
-      vm_hostname: balrog
+  - name: centos-7.4
+    driver_config:
+      vm_hostname: bacula
 
 suites:
   - name: director
     run_list:
-      - recipe[segulja_spacewalk::default]
+      # - recipe[segulja_spacewalk::default]
       - recipe[segulja_bacula::director]
       - recipe[segulja_bacula::storage]
       - recipe[segulja_bacula::database]
