@@ -90,7 +90,7 @@ Job {
 Job {
   Name = "RestoreFiles"
   Type = Restore
-  Client=director-bento-oracle-73.vagrantup.com-fd
+  Client=<%= node['hostname'] %>-fd
   Storage = File1
 # The FileSet and Pool directives are not used by Restore Jobs
 # but must not be removed
@@ -169,8 +169,8 @@ FileSet {
 
 # Client (File Services) to backup
 Client {
-  Name = director-bento-oracle-73.vagrantup.com-fd
-  Address = director-bento-oracle-73
+  Name = <%= node['hostname'] %>-fd
+  Address = <%= node['fqdn'] %>
   FDPort = 9102
   Catalog = MyCatalog
   Password = "i/1JFm/CbQU0NTEAWji4z3tgIUARol8Hft3jQa0slG2l"          # password for FileDaemon
@@ -324,7 +324,7 @@ Pool {
 # Restricted console used by tray-monitor to get the status of the director
 #
 Console {
-  Name = director-bento-oracle-73.vagrantup.com-mon
+  Name = balrog-mon
   Password = "PSD2mIYD01d71PJWSse4hVeAAxssJwmbl6jsMoNMKJed"
   CommandACL = status, .status
 }

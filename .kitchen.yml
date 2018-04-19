@@ -13,10 +13,9 @@ verifier:
   name: inspec
 
 platforms:
-  - name: bento/oracle-7.3
   - name: centos-7.4
     driver_config:
-      vm_hostname: bacula
+      vm_hostname: balrog
 
 suites:
   - name: director

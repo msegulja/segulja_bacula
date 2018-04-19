@@ -22,6 +22,10 @@
   postgresql-devel
   postgresql-libs
   postgresql-server
+  mariadb
+  mariadb-devel
+  mariadb-libs
+  mariadb-server
 ).each do |pkg|
   package pkg do
     action :install
@@ -78,7 +82,7 @@ execute 'Configure Bacula Backup System from source code' do
             --sbindir=/opt/bacula/bin \
             --sysconfdir=/opt/bacula/etc \
             --enable-smartalloc \
-            --with-postgresql \
+            --with-mysql \
             --with-working-dir=/opt/bacula/working \
             --with-pid-dir=/opt/bacula/working \
             --with-subsys-dir=/opt/bacula/working \
